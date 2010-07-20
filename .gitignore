@@ -2,3 +2,6 @@
 /war/WEB-INF/classes/
 /war/WEB-INF/lib/gwt-servlet.jar
 /war/WEB-INF/jribble
+.project
+.settings/
+.classpath
