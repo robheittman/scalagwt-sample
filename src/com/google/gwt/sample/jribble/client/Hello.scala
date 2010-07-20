@@ -1,4 +1,4 @@
-package com.google.gwt.sample.scalagwt.client;
+package com.google.gwt.sample.jribble.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -7,7 +7,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 
-class HelloWorld extends EntryPoint {
+class Hello extends EntryPoint {
 
   def onModuleLoad() {
     val b = new Button("Click me", new ClickHandler() {
@@ -19,3 +19,4 @@ class HelloWorld extends EntryPoint {
     RootPanel.get().add(b);
   }
 }
+

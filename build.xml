@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project name="HelloWorld" default="build" basedir=".">
+<project name="Hello" default="build" basedir=".">
   <!-- Arguments -style PRETTY or -logLevel DEBUG to gwtc and devmode targets -->
   <property name="gwt.args" value="" />
   
@@ -44,7 +44,7 @@
       <!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
       <jvmarg value="-Xmx256M"/>
       <arg line="${gwt.args}"/>
-      <arg value="com.google.gwt.sample.scalagwt.HelloWorld"/>
+      <arg value="com.google.gwt.sample.jribble.Hello"/>
     </java>
   </target>
   
@@ -66,23 +66,23 @@
       </classpath>
       <jvmarg value="-Xmx256M"/>
       <arg value="-startupUrl"/>
-      <arg value="HelloWorld.html"/>
+      <arg value="Hello.html"/>
       <arg line="${gwt.args}"/>
-      <arg value="com.google.gwt.sample.scalagwt.HelloWorld"/>
+      <arg value="com.google.gwt.sample.jribble.Hello"/>
     </java>
   </target>
 
   <target name="build" depends="gwtc" description="Build this project" />
 
   <target name="war" depends="build" description="Create a war file">
-    <zip destfile="HelloWorld.war" basedir="war"/>
+    <zip destfile="Hello.war" basedir="war"/>
   </target>
 
   <target name="clean" description="Cleans this project">
     <delete dir="war/WEB-INF/classes" failonerror="false" />
     <delete dir="war/WEB-INF/jribble" failonerror="false" />
-    <delete dir="war/helloworld" failonerror="false" />
-    <delete file="war/HelloWorld.war"/>
+    <delete dir="war/hello" failonerror="false" />
+    <delete file="Hello.war"/>
   </target>
 
 </project>
