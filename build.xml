@@ -10,6 +10,7 @@
   <path id="project.class.path">
     <pathelement location="war/WEB-INF/classes"/>
     <pathelement location="lib/gwt/gwt-user.jar"/>
+    <pathelement location="lib/scala/scala-library-jribble.jar"/>
     <fileset dir="lib/gwt" includes="gwt-dev*.jar"/>
     <!-- Add any additional non-server libs (such as JUnit) -->
     <fileset dir="war/WEB-INF/lib" includes="**/*.jar"/>

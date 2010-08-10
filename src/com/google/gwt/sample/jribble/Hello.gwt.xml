@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='hello'>
   <inherits name='com.google.gwt.user.User'/>
+  <inherits name='ScalaLibrary'/>
   <entry-point class='com.google.gwt.sample.jribble.client.Hello'/>
   <source path='client'/>
 </module>
