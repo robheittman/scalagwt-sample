@@ -12,7 +12,7 @@ class Hello extends EntryPoint {
   def onModuleLoad() {
     val b = new Button("Click me", new ClickHandler() {
       def onClick(event: ClickEvent) {
-        Window.alert("Hello, AJAX");
+        Window.alert("Hello, AJAX, said Scala");
       }
     });
 
