@@ -22,19 +22,6 @@
     <copy todir="war/WEB-INF/lib" file="lib/gwt/gwt-servlet.jar" />
   </target>
 
-  <target name="javac" depends="libs" description="Compile java source">
-    <mkdir dir="war/WEB-INF/classes"/>
-    <javac srcdir="src" includes="**" encoding="utf-8"
-        destdir="war/WEB-INF/classes"
-        source="1.5" target="1.5" nowarn="true"
-        debug="true" debuglevel="lines,vars,source">
-      <classpath refid="project.class.path"/>
-    </javac>
-    <copy todir="war/WEB-INF/classes">
-      <fileset dir="src" excludes="**/*.java"/>
-    </copy>
-  </target>
-
   <target name="gwtc" depends="scalac" description="GWT compile to JavaScript">
     <java failonerror="true" fork="true" classname="com.google.gwt.dev.Compiler">
       <classpath>
@@ -59,7 +46,7 @@
   </target>
 
 
-  <target name="devmode" depends="javac" description="Run development mode">
+  <target name="devmode" depends="scalac" description="Run development mode">
     <java failonerror="true" fork="true" classname="com.google.gwt.dev.DevMode">
       <classpath>
         <pathelement location="src"/>
