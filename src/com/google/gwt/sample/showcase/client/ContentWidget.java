@@ -234,7 +234,7 @@ public abstract class ContentWidget extends LazyPanel implements
 
     // Load the style definitions
     if (hasStyle() && tabHTML.equals(constants.contentWidgetStyle())) {
-      final String theme = Showcase.CUR_THEME;
+      final String theme = Showcase.CUR_THEME();
       if (styleDefs.containsKey(theme)) {
         styleWidget.setHTML(styleDefs.get(theme));
       } else {

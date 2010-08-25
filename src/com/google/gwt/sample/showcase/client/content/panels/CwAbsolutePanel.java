@@ -160,7 +160,7 @@ public class CwAbsolutePanel extends ContentWidget {
     grid.setBorderWidth(1);
     for (int i = 0; i < 3; i++) {
       grid.setHTML(0, i, i + "");
-      grid.setWidget(1, i, new Image(Showcase.images.gwtLogoThumb()));
+      grid.setWidget(1, i, new Image(Showcase.images().gwtLogoThumb()));
     }
     absolutePanel.add(grid, 60, 100);
     widgetMap.put(widgetNames[2], grid);
