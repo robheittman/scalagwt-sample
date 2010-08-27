@@ -210,10 +210,10 @@ public class CwAnimation extends ContentWidget {
     absolutePanel.ensureDebugId("cwAbsolutePanel");
 
     // Add a widget that we will animate
-    animateeTop = new Image(Showcase.images.gwtLogoThumb());
-    animateeBottom = new Image(Showcase.images.gwtLogoThumb());
-    animateeLeft = new Image(Showcase.images.gwtLogoThumb());
-    animateeRight = new Image(Showcase.images.gwtLogoThumb());
+    animateeTop = new Image(Showcase.images().gwtLogoThumb());
+    animateeBottom = new Image(Showcase.images().gwtLogoThumb());
+    animateeLeft = new Image(Showcase.images().gwtLogoThumb());
+    animateeRight = new Image(Showcase.images().gwtLogoThumb());
     absolutePanel.add(animateeTop);
     absolutePanel.add(animateeBottom);
     absolutePanel.add(animateeLeft);

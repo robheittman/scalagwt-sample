@@ -99,26 +99,26 @@ public class CwCustomButton extends ContentWidget {
 
     // Add a normal PushButton
     PushButton normalPushButton = new PushButton(
-        new Image(Showcase.images.gwtLogo()));
+        new Image(Showcase.images().gwtLogo()));
     normalPushButton.ensureDebugId("cwCustomButton-push-normal");
     pushPanel.add(normalPushButton);
 
     // Add a disabled PushButton
     PushButton disabledPushButton = new PushButton(
-        new Image(Showcase.images.gwtLogo()));
+        new Image(Showcase.images().gwtLogo()));
     disabledPushButton.ensureDebugId("cwCustomButton-push-disabled");
     disabledPushButton.setEnabled(false);
     pushPanel.add(disabledPushButton);
 
     // Add a normal ToggleButton
     ToggleButton normalToggleButton = new ToggleButton(
-        new Image(Showcase.images.gwtLogo()));
+        new Image(Showcase.images().gwtLogo()));
     normalToggleButton.ensureDebugId("cwCustomButton-toggle-normal");
     togglePanel.add(normalToggleButton);
 
     // Add a disabled ToggleButton
     ToggleButton disabledToggleButton = new ToggleButton(
-        new Image(Showcase.images.gwtLogo()));
+        new Image(Showcase.images().gwtLogo()));
     disabledToggleButton.ensureDebugId("cwCustomButton-toggle-disabled");
     disabledToggleButton.setEnabled(false);
     togglePanel.add(disabledToggleButton);

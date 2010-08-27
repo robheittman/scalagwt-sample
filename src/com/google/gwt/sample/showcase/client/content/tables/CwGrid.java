@@ -87,7 +87,7 @@ public class CwGrid extends ContentWidget {
     int numColumns = grid.getColumnCount();
     for (int row = 0; row < numRows; row++) {
       for (int col = 0; col < numColumns; col++) {
-        grid.setWidget(row, col, new Image(Showcase.images.gwtLogo()));
+        grid.setWidget(row, col, new Image(Showcase.images().gwtLogo()));
       }
     }
 

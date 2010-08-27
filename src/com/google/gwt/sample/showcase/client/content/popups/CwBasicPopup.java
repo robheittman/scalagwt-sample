@@ -114,7 +114,7 @@ public class CwBasicPopup extends ContentWidget {
         });
 
     // Create a popup to show the full size image
-    Image jimmyFull = new Image(Showcase.images.jimmy());
+    Image jimmyFull = new Image(Showcase.images().jimmy());
     final PopupPanel imagePopup = new PopupPanel(true);
     imagePopup.setAnimationEnabled(true);
     imagePopup.ensureDebugId("cwBasicPopup-imagePopup");
@@ -126,7 +126,7 @@ public class CwBasicPopup extends ContentWidget {
     });
 
     // Add an image thumbnail
-    Image jimmyThumb = new Image(Showcase.images.jimmyThumb());
+    Image jimmyThumb = new Image(Showcase.images().jimmyThumb());
     jimmyThumb.ensureDebugId("cwBasicPopup-thumb");
     jimmyThumb.addStyleName("cw-BasicPopup-thumb");
     jimmyThumb.addClickHandler(new ClickHandler() {

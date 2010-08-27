@@ -155,8 +155,8 @@ public class CwFlexTable extends ContentWidget {
   @ShowcaseSource
   private void addRow(FlexTable flexTable) {
     int numRows = flexTable.getRowCount();
-    flexTable.setWidget(numRows, 0, new Image(Showcase.images.gwtLogo()));
-    flexTable.setWidget(numRows, 1, new Image(Showcase.images.gwtLogo()));
+    flexTable.setWidget(numRows, 0, new Image(Showcase.images().gwtLogo()));
+    flexTable.setWidget(numRows, 1, new Image(Showcase.images().gwtLogo()));
     flexTable.getFlexCellFormatter().setRowSpan(0, 1, numRows + 1);
   }
 

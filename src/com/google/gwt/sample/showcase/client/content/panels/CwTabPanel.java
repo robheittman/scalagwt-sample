@@ -98,7 +98,7 @@ public class CwTabPanel extends ContentWidget {
 
     // Add a tab with an image
     VerticalPanel vPanel = new VerticalPanel();
-    vPanel.add(new Image(Showcase.images.gwtLogo()));
+    vPanel.add(new Image(Showcase.images().gwtLogo()));
     tabPanel.add(vPanel, tabTitles[1]);
 
     // Add a tab
