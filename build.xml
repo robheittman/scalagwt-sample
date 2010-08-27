@@ -40,11 +40,27 @@
 
   <target name="scalac" description="Scalac compile to jribble">
     <mkdir dir="war/WEB-INF/jribble"/>
-    <scalac srcdir="src" includes="**"  destdir="war/WEB-INF/jribble" target="jribble">
+    <!-- srcdir should really be 'src', but we can't compile both samples to jribble yet -->
+    <scalac srcdir="src/com/google/gwt/sample/jribble" includes="**"  destdir="war/WEB-INF/jribble" target="jribble">
       <classpath refid="project.class.path"/>
     </scalac>
   </target>
 
+  <!-- temporary target to compile the showcase sample to jvm bytecode until jribble can be used -->
+  <target name="scalac-showcase-jvm" description="Scalac compile showcase to jvm bytecode">
+    <mkdir dir="war/WEB-INF/showcase"/>
+    <scalac srcdir="src/com/google/gwt/sample/showcase" includes="**"  destdir="war/WEB-INF/showcase">
+      <classpath refid="project.class.path"/>
+    </scalac>
+  </target>
+
+  <!-- temporary target to try compiling the showcase sample to jribble -->
+  <target name="scalac-showcase-jribble" description="Scalac compile showcase to jribble">
+    <mkdir dir="war/WEB-INF/showcase"/>
+    <scalac srcdir="src/com/google/gwt/sample/showcase" includes="**"  destdir="war/WEB-INF/showcase" target="jribble">
+      <classpath refid="project.class.path"/>
+    </scalac>
+  </target>
 
   <target name="devmode" depends="scalac" description="Run development mode">
     <java failonerror="true" fork="true" classname="com.google.gwt.dev.DevMode">
@@ -69,6 +85,7 @@
   <target name="clean" description="Cleans this project">
     <delete dir="war/WEB-INF/classes" failonerror="false" />
     <delete dir="war/WEB-INF/jribble" failonerror="false" />
+    <delete dir="war/WEB-INF/showcase" failonerror="false" />
     <delete dir="war/hello" failonerror="false" />
     <delete file="Hello.war"/>
   </target>
