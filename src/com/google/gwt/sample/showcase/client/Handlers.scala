@@ -20,11 +20,7 @@ import com.google.gwt.event.dom.client.ChangeEvent
 import com.google.gwt.event.dom.client.ChangeHandler
 import com.google.gwt.event.dom.client.ClickEvent
 import com.google.gwt.event.dom.client.ClickHandler
-import com.google.gwt.event.logical.shared.SelectionEvent
-import com.google.gwt.event.logical.shared.SelectionHandler
-import com.google.gwt.event.logical.shared.ValueChangeEvent
-import com.google.gwt.event.logical.shared.ValueChangeHandler
-
+import com.google.gwt.event.logical.shared._
 
 /**
  * Provides implicit conversions that allow functions to be substituted where handlers are called for.
@@ -45,6 +41,10 @@ object Handlers {
    implicit def fn2valueChangeHandler[T](fn: ValueChangeEvent[T] => Unit): ValueChangeHandler[T] =
       new ValueChangeHandler[T] {
          def onValueChange(event: ValueChangeEvent[T]): Unit = fn(event)
+      }
+   implicit def fn2openHandler[T](fn: OpenEvent[T] => Unit): OpenHandler[T] =
+      new OpenHandler[T] {
+         def onOpen(event: OpenEvent[T]): Unit = fn(event)
       }
 }
 
