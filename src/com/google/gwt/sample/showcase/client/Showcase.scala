@@ -511,21 +511,4 @@ class Showcase extends EntryPoint {
    }
 }
 
-object Handlers {
-   implicit def fn2changeHandler(fn: ChangeEvent => Unit): ChangeHandler =
-      new ChangeHandler() {
-         def onChange(event: ChangeEvent) = fn(event)
-      }
-   implicit def fn2clickHandler(fn: ClickEvent => Unit): ClickHandler =
-      new ClickHandler() {
-         def onClick(event: ClickEvent) = fn(event)
-      }
-   implicit def fn2selectionHandler[T](fn: SelectionEvent[T] => Unit): SelectionHandler[T] =
-      new SelectionHandler[T] {
-         def onSelection(event: SelectionEvent[T]): Unit = fn(event)
-      }
-   implicit def fn2valueChangeHandler[T](fn: ValueChangeEvent[T] => Unit): ValueChangeHandler[T] =
-      new ValueChangeHandler[T] {
-         def onValueChange(event: ValueChangeEvent[T]): Unit = fn(event)
-      }
-}
+
