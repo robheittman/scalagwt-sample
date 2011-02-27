@@ -10,13 +10,15 @@ import com.google.gwt.user.client.ui.RootPanel;
 class Hello extends EntryPoint {
 
   def onModuleLoad() {
-    val b = new Button("Click me", new ClickHandler() {
-      def onClick(event: ClickEvent) {
-        Window.alert("Hello, AJAX, said Scala");
-      }
-    });
+    val numbers = List(1, 2, 3, 4) 
+    val strings = numbers map (_.toString + "...")
+    val s = strings mkString ", "
+    val b = new Button("Click me", (_: ClickEvent) => Window.alert("Hello, AJAX, said Scala\nThose numbers are coming from list!\n" + s));
 
     RootPanel.get().add(b);
   }
+  
+  implicit def clickHandler(f: ClickEvent => Unit): ClickHandler = new ClickHandler {
+    def onClick(event: ClickEvent) = f(event)
+  }
 }
-
