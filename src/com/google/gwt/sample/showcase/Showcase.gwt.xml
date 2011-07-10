@@ -7,6 +7,7 @@
   <inherits name="com.google.gwt.user.theme.standard.StandardResources"/>
   <inherits name="com.google.gwt.user.theme.chrome.ChromeResources"/>
   <inherits name="com.google.gwt.user.theme.dark.DarkResources"/>
+  <inherits name="ScalaLibrary"/>
 
   <!-- Enable debug ID. -->
   <inherits name="com.google.gwt.user.Debug"/>

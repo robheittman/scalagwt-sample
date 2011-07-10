@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="Hello" default="build" basedir=".">
   <!-- Arguments -style PRETTY or -logLevel DEBUG to gwtc and devmode targets -->
-  <property name="gwt.args" value="-draftCompile -ea -style pretty" />
+  <property name="gwt.args" value="-draftCompile -ea -style pretty -logLevel DEBUG" />
   
   <path id="scala.class.path">
-    <fileset dir="lib/scala" includes="scala-compiler.jar,scala-library.jar"/>
+    <fileset dir="lib/scala" includes="*.jar"/>
   </path>
 
   <path id="project.class.path">
     <pathelement location="war/WEB-INF/classes"/>
-    <pathelement location="lib/gwt/gwt-user.jar"/>
     <pathelement location="lib/scala/scala-library-jribble.jar"/>
-    <fileset dir="lib/gwt" includes="gwt-dev*.jar"/>
+    <fileset dir="lib/gwt" includes="*.jar"/>
     <!-- Add any additional non-server libs (such as JUnit) -->
     <fileset dir="war/WEB-INF/lib" includes="**/*.jar"/>
     <path refid="scala.class.path"/>
@@ -32,7 +31,8 @@
       <!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
       <jvmarg value="-Xmx512M"/>
       <arg line="${gwt.args}"/>
-      <arg value="com.google.gwt.sample.jribble.Hello"/>
+      <!--arg value="com.google.gwt.sample.jribble.Hello"/-->
+      <arg value="com.google.gwt.sample.showcase.Showcase"/>
     </java>
   </target>
   
@@ -41,9 +41,16 @@
   <target name="scalac" description="Scalac compile to jribble">
     <mkdir dir="war/WEB-INF/jribble"/>
     <!-- srcdir should really be 'src', but we can't compile both samples to jribble yet -->
-    <scalac srcdir="src/com/google/gwt/sample/jribble" includes="**"  destdir="war/WEB-INF/jribble" target="jribble" addparams="-no-specialization -g:notailcalls">
+    <scalac srcdir="src" includes="**"  destdir="war/WEB-INF/jribble" target="jribble" addparams="-no-specialization -g:notailcalls">
       <classpath refid="project.class.path"/>
     </scalac>
+    <mkdir dir="war/WEB-INF/classes"/>
+    <scalac srcdir="src" includes="**"  destdir="war/WEB-INF/classes" addparams="-no-specialization -g:notailcalls">
+      <classpath refid="project.class.path"/>
+    </scalac>
+    <javac srcdir="src" destdir="war/WEB-INF/classes">
+      <classpath refid="project.class.path"/>
+    </javac>
   </target>
 
   <!-- temporary target to compile the showcase sample to jvm bytecode until jribble can be used -->
