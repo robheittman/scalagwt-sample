@@ -1,5 +1,7 @@
 /war/hello/
+/war/showcase/
 /war/WEB-INF/classes/
+/war/WEB-INF/deploy/
 /war/WEB-INF/lib/gwt-servlet.jar
 /war/WEB-INF/jribble
 /war/WEB-INF/showcase

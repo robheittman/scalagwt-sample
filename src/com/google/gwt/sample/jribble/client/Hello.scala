@@ -10,11 +10,10 @@ import com.google.gwt.user.client.ui.RootPanel;
 class Hello extends EntryPoint {
 
   def onModuleLoad() {
-    val numbers = List(1, 2, 3, 4) 
+    val numbers = List(1, 2, 3, 4)
     val strings = numbers map (_.toString + "...")
     val s = strings mkString ", "
     val b = new Button("Click me", (_: ClickEvent) => Window.alert("Hello, AJAX, said Scala\nThose numbers are coming from list!\n" + s));
-
     RootPanel.get().add(b);
   }
   
