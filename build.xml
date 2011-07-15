@@ -55,17 +55,17 @@
   </target>
 
   <!-- temporary target to compile the showcase sample to jvm bytecode until jribble can be used -->
-  <target name="scalac-showcase-jvm" description="Scalac compile showcase to jvm bytecode">
+  <target name="scalac-jvm" description="Scalac compile showcase to jvm bytecode">
     <mkdir dir="war/WEB-INF/jribble"/>
-    <scalac srcdir="src/com/google/gwt/sample/showcase" includes="**"  destdir="war/WEB-INF/jribble">
+    <scalac srcdir="src" includes="**"  destdir="war/WEB-INF/jribble">
       <classpath refid="project.class.path"/>
     </scalac>
   </target>
 
   <!-- temporary target to try compiling the showcase sample to jribble -->
-  <target name="scalac-showcase-jribble" description="Scalac compile showcase to jribble">
+  <target name="scalac-jribble" description="Scalac compile showcase to jribble">
     <mkdir dir="war/WEB-INF/jribble"/>
-    <scalac srcdir="src/com/google/gwt/sample/showcase" includes="**"  destdir="war/WEB-INF/jribble" target="jribble">
+    <scalac srcdir="src" includes="**"  destdir="war/WEB-INF/jribble" target="jribble">
       <classpath refid="project.class.path"/>
     </scalac>
   </target>
