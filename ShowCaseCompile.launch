@@ -23,7 +23,7 @@
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.google.gwt.dev.Compiler"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-logLevel DEBUG&#10;-style PRETTY&#10;-draftCompile&#10;com.google.gwt.sample.jribble.Hello"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-logLevel INFO&#10;-style PRETTY&#10;-draftCompile&#10;com.google.gwt.sample.showcase.Showcase"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="scalagwt-sample"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m&#10;-Dgwt.persistentunitcache=true&#10;-Dgwt.usearchives=false&#10;-Dx.gwt.astBuilder=true&#10;-Dgwt.jjs.dumpAsta=./Hello.ast&#10;-ea"/>
 </launchConfiguration>
