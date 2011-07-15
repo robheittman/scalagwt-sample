@@ -186,13 +186,15 @@ public class ShowcaseGenerator extends Generator {
         int endTagIndex = fileContents.indexOf("\n", dataTagIndex) + 1;
         int endIndex = fileContents.indexOf(";", beginIndex) + 1;
 
-        // Add to the formatted source
-        String srcData = fileContents.substring(beginIndex, beginTagIndex)
-            + fileContents.substring(endTagIndex, endIndex);
-        formattedSource += srcData + "\n\n";
+        if (beginIndex < beginTagIndex && endTagIndex < endIndex) {
+          // Add to the formatted source
+          String srcData = fileContents.substring(beginIndex, beginTagIndex)
+              + fileContents.substring(endTagIndex, endIndex);
+          formattedSource += srcData + "\n\n";
+        }
 
         // Get next tag
-        dataTagIndex = fileContents.indexOf(dataTag, endIndex + 1);
+        dataTagIndex = endIndex < dataTagIndex ? -1 : fileContents.indexOf(dataTag, endIndex + 1);
       } else {
         // Get the boundaries of a SRC tag
         int beginIndex = fileContents.lastIndexOf("/*", srcTagIndex) - 2;
