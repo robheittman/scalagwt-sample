@@ -261,10 +261,10 @@ class Showcase extends EntryPoint {
     */
    private def setupMainLinks(constants: ShowcaseConstants): Unit = {
       // Link to GWT Homepage
-      app.addLink(new HTML(<a href={ShowcaseConstants.GWT_HOMEPAGE}>{ constants.mainLinkHomepage }</a>.toString))
+      app.addLink(new HTML("<a href=" + ShowcaseConstants.GWT_HOMEPAGE + ">" + constants.mainLinkHomepage + "</a>"))
 
       // Link to More Examples
-      app.addLink(new HTML(<a href={ShowcaseConstants.GWT_EXAMPLES}>{ constants.mainLinkExamples }</a>.toString))
+      app.addLink(new HTML("<a href=" + ShowcaseConstants.GWT_EXAMPLES + ">" + constants.mainLinkExamples + "</a>"))
    }
 
    /**
@@ -421,7 +421,7 @@ class Showcase extends EntryPoint {
     */
    private def setupTitlePanel(constants: ShowcaseConstants): Unit = {
       // Get the title from the internationalized constants
-      val pageTitle = <h1>{ constants.mainTitle }</h1><h2>{ constants.mainSubTitle }</h2>;
+      val pageTitle = "<h1>" + constants.mainTitle + "</h1><h2>" + constants.mainSubTitle + "</h2>";
 
       // Add the title and some images to the title bar
       val titlePanel = new HorizontalPanel
