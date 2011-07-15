@@ -17,7 +17,6 @@
 
 package com.google.gwt.sample.showcase.client.content.lists
 
-
 import com.google.gwt.core.client.GWT
 import com.google.gwt.core.client.RunAsyncCallback
 import com.google.gwt.i18n.client.Constants
@@ -32,24 +31,23 @@ import com.google.gwt.user.client.ui.SuggestBox
 import com.google.gwt.user.client.ui.VerticalPanel
 import com.google.gwt.user.client.ui.Widget
 
-
 /**
  * Example file.
  */
 object CwSuggestBox {
-   /**
-    * The constants used in this Content Widget.
-    */
-   @ShowcaseSource
-   trait CwConstants extends Constants with ContentWidget.CwConstants {
-      def cwSuggestBoxWords: Array[String]
+  /**
+   * The constants used in this Content Widget.
+   */
+  @ShowcaseSource
+  trait CwConstants extends Constants with ContentWidget.CwConstants {
+    def cwSuggestBoxWords: Array[String]
 
-      def cwSuggestBoxDescription: String
+    def cwSuggestBoxDescription: String
 
-      def cwSuggestBoxName: String
+    def cwSuggestBoxName: String
 
-      def cwSuggestBoxLabel: String
-   }
+    def cwSuggestBoxLabel: String
+  }
 }
 
 @ShowcaseStyle(Array(
@@ -58,40 +56,40 @@ object CwSuggestBox {
 class CwSuggestBox(@ShowcaseData private val constants: CwSuggestBox.CwConstants)
       extends ContentWidget(constants) {
 
-   def getDescription: String = constants.cwSuggestBoxDescription
+  def getDescription: String = constants.cwSuggestBoxDescription
 
-   def getName: String = constants.cwSuggestBoxName
+  def getName: String = constants.cwSuggestBoxName
 
-   /**
-    * Initialize this example.
-    */
-   @ShowcaseSource
-   def onInitialize: Widget = {
-      // Define the oracle that finds suggestions
-      val oracle = new MultiWordSuggestOracle
-      val words = constants.cwSuggestBoxWords
-      words foreach { oracle.add(_) }
+  /**
+   * Initialize this example.
+   */
+  @ShowcaseSource
+  def onInitialize: Widget = {
+    // Define the oracle that finds suggestions
+    val oracle = new MultiWordSuggestOracle
+    val words = constants.cwSuggestBoxWords
+    words foreach { oracle.add(_) }
 
-      // Create the suggest box
-      val suggestBox = new SuggestBox(oracle)
-      suggestBox.ensureDebugId("cwSuggestBox")
-      val suggestPanel = new VerticalPanel
-      suggestPanel.add(new HTML(constants.cwSuggestBoxLabel))
-      suggestPanel.add(suggestBox)
+    // Create the suggest box
+    val suggestBox = new SuggestBox(oracle)
+    suggestBox.ensureDebugId("cwSuggestBox")
+    val suggestPanel = new VerticalPanel
+    suggestPanel.add(new HTML(constants.cwSuggestBoxLabel))
+    suggestPanel.add(suggestBox)
 
-      // Return the panel
-      suggestPanel
-   }
+    // Return the panel
+    suggestPanel
+  }
 
-   protected[client] def asyncOnInitialize(callback: AsyncCallback[Widget]): Unit = {
-      GWT.runAsync(new RunAsyncCallback {
-         def onFailure(caught: Throwable): Unit = {
-            callback.onFailure(caught)
-         }
+  protected[client] def asyncOnInitialize(callback: AsyncCallback[Widget]): Unit = {
+    GWT.runAsync(new RunAsyncCallback {
+      def onFailure(caught: Throwable): Unit = {
+        callback.onFailure(caught)
+      }
 
-         def onSuccess: Unit = {
-            callback.onSuccess(onInitialize)
-         }
-      })
-   }
+      def onSuccess: Unit = {
+        callback.onSuccess(onInitialize)
+      }
+    })
+  }
 }
