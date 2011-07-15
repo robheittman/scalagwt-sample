@@ -447,6 +447,7 @@ class Showcase extends EntryPoint {
       var styleSheetsFound = false
       val headElem: HeadElement = StyleSheetLoader.getHeadElement
       var toRemove: List[Element] = Nil
+      /* TODO compare to GWT trunk
       val children: NodeList[Node] = headElem.getChildNodes
       for (i <- 0 to children.getLength;
            node = children.getItem(i) if (node.getNodeType == Node.ELEMENT_NODE);
@@ -461,6 +462,7 @@ class Showcase extends EntryPoint {
             toRemove = elem :: toRemove;
          }
       }
+      */
 
       // Return if we already have the correct style sheets
       if (styleSheetsFound && toRemove.size == 0) {
