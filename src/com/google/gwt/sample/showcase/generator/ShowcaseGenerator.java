@@ -285,8 +285,13 @@ public class ShowcaseGenerator extends Generator {
       throws UnableToCompleteException {
     InputStream in = classLoader.getResourceAsStream(path);
     if (in == null) {
-      logger.log(TreeLogger.ERROR, "Resource not found: " + path);
-      throw new UnableToCompleteException();
+      if (path.endsWith(".java")) {
+        in = classLoader.getResourceAsStream(path.replace(".java", ".scala"));
+      }
+      if (in == null) {
+        logger.log(TreeLogger.ERROR, "Resource not found: " + path);
+        throw new UnableToCompleteException();
+      }
     }
 
     StringBuffer fileContentsBuf = new StringBuffer();
