@@ -13,41 +13,42 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.gwt.sample.showcase.client;
+package com.google.gwt.sample.showcase.client
 
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.ImageResource;
+import com.google.gwt.resources.client.ClientBundle
+import com.google.gwt.resources.client.ImageResource
 
 /**
  * The images used throughout the Showcase.
  */
-public interface ShowcaseImages extends ClientBundle {
-  ImageResource catI18N();
+trait ShowcaseImages extends ClientBundle {
 
-  ImageResource catLists();
+  def catI18N(): ImageResource
 
-  ImageResource catOther();
+  def catLists(): ImageResource
 
-  ImageResource catPanels();
+  def catOther(): ImageResource
 
-  ImageResource catPopups();
+  def catPanels(): ImageResource
 
-  ImageResource catTables();
+  def catPopups(): ImageResource
 
-  ImageResource catTextInput();
+  def catTables(): ImageResource
 
-  ImageResource catWidgets();
+  def catTextInput(): ImageResource
 
-  ImageResource gwtLogo();
+  def catWidgets(): ImageResource
 
-  ImageResource gwtLogoThumb();
+  def gwtLogo(): ImageResource
 
-  ImageResource jimmy();
+  def gwtLogoThumb(): ImageResource
 
-  ImageResource jimmyThumb();
+  def jimmy(): ImageResource
+
+  def jimmyThumb(): ImageResource
 
   /**
    * Indicates the locale selection box.
    */
-  ImageResource locale();
+  def locale(): ImageResource
 }
