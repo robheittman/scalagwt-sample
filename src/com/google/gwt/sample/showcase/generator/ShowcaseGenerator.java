@@ -22,7 +22,7 @@ import com.google.gwt.core.ext.UnableToCompleteException;
 import com.google.gwt.core.ext.typeinfo.JClassType;
 import com.google.gwt.core.ext.typeinfo.NotFoundException;
 import com.google.gwt.sample.showcase.client.ContentWidget;
-import com.google.gwt.sample.showcase.client.ShowcaseConstants;
+import com.google.gwt.sample.showcase.client.ShowcaseConstants$;
 import com.google.gwt.sample.showcase.client.ShowcaseAnnotations.ShowcaseData;
 import com.google.gwt.sample.showcase.client.ShowcaseAnnotations.ShowcaseRaw;
 import com.google.gwt.sample.showcase.client.ShowcaseAnnotations.ShowcaseSource;
@@ -95,11 +95,11 @@ public class ShowcaseGenerator extends Generator {
     }
 
     // Generate the CSS source files
-    for (String theme : ShowcaseConstants.STYLE_THEMES) {
+    for (String theme : ShowcaseConstants$.MODULE$.STYLE_THEMES()) {
       String styleDefsLTR = getStyleDefinitions(theme, false);
       String styleDefsRTL = getStyleDefinitions(theme, true);
-      String outDirLTR = ShowcaseConstants.DST_SOURCE_STYLE + theme + "/";
-      String outDirRTL = ShowcaseConstants.DST_SOURCE_STYLE + theme + "_rtl/";
+      String outDirLTR = ShowcaseConstants$.MODULE$.DST_SOURCE_STYLE() + theme + "/";
+      String outDirRTL = ShowcaseConstants$.MODULE$.DST_SOURCE_STYLE() + theme + "_rtl/";
       for (JClassType type : types) {
         generateStyleFiles(type, styleDefsLTR, outDirLTR);
         generateStyleFiles(type, styleDefsRTL, outDirRTL);
@@ -156,7 +156,7 @@ public class ShowcaseGenerator extends Generator {
       fileContents = "<pre>" + fileContents + "</pre>";
 
       // Save the raw source in the public directory
-      String dstPath = ShowcaseConstants.DST_SOURCE_RAW + filename + ".html";
+      String dstPath = ShowcaseConstants$.MODULE$.DST_SOURCE_RAW() + filename + ".html";
       createPublicResource(dstPath, fileContents);
     }
   }
@@ -219,7 +219,7 @@ public class ShowcaseGenerator extends Generator {
     formattedSource = "<pre>" + formattedSource + "</pre>";
 
     // Save the source code to a file
-    String dstPath = ShowcaseConstants.DST_SOURCE_EXAMPLE
+    String dstPath = ShowcaseConstants$.MODULE$.DST_SOURCE_EXAMPLE()
         + type.getSimpleSourceName() + ".html";
     createPublicResource(dstPath, formattedSource);
   }
@@ -348,7 +348,7 @@ public class ShowcaseGenerator extends Generator {
    * @return true if this is the first pass, false if not
    */
   private boolean isFirstPass() {
-    String placeholder = ShowcaseConstants.DST_SOURCE + "generated";
+    String placeholder = ShowcaseConstants$.MODULE$.DST_SOURCE() + "generated";
     try {
       OutputStream outStream = context.tryCreateResource(logger, placeholder);
       if (outStream == null) {

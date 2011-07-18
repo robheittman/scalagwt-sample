@@ -16,7 +16,6 @@ package com.google.gwt.sample.showcase.client
  * the License.
  */
 
-
 import com.google.gwt.core.client.EntryPoint
 import com.google.gwt.core.client.GWT
 import com.google.gwt.dom.client.Element
@@ -91,7 +90,6 @@ import com.google.gwt.user.client.ui.VerticalPanel
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.Map
-
 
 object Showcase {
    /**

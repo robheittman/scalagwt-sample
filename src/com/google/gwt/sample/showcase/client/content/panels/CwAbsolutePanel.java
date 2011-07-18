@@ -52,8 +52,7 @@ public class CwAbsolutePanel extends ContentWidget {
    * The constants used in this Content Widget.
    */
   @ShowcaseSource
-  public static interface CwConstants extends Constants,
-      ContentWidget.CwConstants {
+  public static interface CwConstants extends Constants, ContentWidget.CwConstants {
     String cwAbsolutePanelClickMe();
 
     String cwAbsolutePanelDescription();
@@ -197,7 +196,7 @@ public class CwAbsolutePanel extends ContentWidget {
   }
 
   @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
+  public void asyncOnInitialize(final AsyncCallback<Widget> callback) {
     GWT.runAsync(new RunAsyncCallback() {
 
       public void onFailure(Throwable caught) {

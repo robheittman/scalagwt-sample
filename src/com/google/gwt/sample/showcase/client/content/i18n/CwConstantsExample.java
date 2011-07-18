@@ -22,7 +22,9 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.i18n.client.Constants;
 import com.google.gwt.sample.showcase.client.ContentWidget;
+import com.google.gwt.sample.showcase.client.ContentWidget$;
 import com.google.gwt.sample.showcase.client.ShowcaseConstants;
+import com.google.gwt.sample.showcase.client.ShowcaseConstants$;
 import com.google.gwt.sample.showcase.client.ShowcaseAnnotations.ShowcaseData;
 import com.google.gwt.sample.showcase.client.ShowcaseAnnotations.ShowcaseRaw;
 import com.google.gwt.sample.showcase.client.ShowcaseAnnotations.ShowcaseSource;
@@ -46,8 +48,7 @@ public class CwConstantsExample extends ContentWidget {
    * The constants used in this Content Widget.
    */
   @ShowcaseSource
-  public static interface CwConstants extends Constants,
-      ContentWidget.CwConstants {
+  public static interface CwConstants extends Constants, ContentWidget.CwConstants {
     String cwConstantsExampleDescription();
 
     String cwConstantsExampleLinkText();
@@ -181,20 +182,20 @@ public class CwConstantsExample extends ContentWidget {
       javaLoaded = true;
       String className = ExampleConstants.class.getName();
       className = className.substring(className.lastIndexOf(".") + 1);
-      requestSourceContents(ShowcaseConstants.DST_SOURCE_RAW + className
+      requestSourceContents(ShowcaseConstants$.MODULE$.DST_SOURCE_RAW() + className
           + ".java.html", javaWidget, null);
     } else if (!propertiesLoaded && tabIndex == 3) {
       // Load ErrorMessages.properties
       propertiesLoaded = true;
       String className = ExampleConstants.class.getName();
       className = className.substring(className.lastIndexOf(".") + 1);
-      requestSourceContents(ShowcaseConstants.DST_SOURCE_RAW + className
+      requestSourceContents(ShowcaseConstants$.MODULE$.DST_SOURCE_RAW() + className
           + ".properties.html", propertiesWidget, null);
     }
   }
 
   @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
+  public void asyncOnInitialize(final AsyncCallback<Widget> callback) {
     GWT.runAsync(new RunAsyncCallback() {
 
       public void onFailure(Throwable caught) {

@@ -113,7 +113,7 @@ class CwListBox(@ShowcaseData private val constants: CwListBox.CwConstants)
     hPanel
   }
 
-  protected[client] def asyncOnInitialize(callback: AsyncCallback[Widget]): Unit = {
+  protected override def asyncOnInitialize(callback: AsyncCallback[Widget]): Unit = {
     GWT.runAsync(new RunAsyncCallback {
       def onFailure(caught: Throwable): Unit = {
         callback.onFailure(caught)

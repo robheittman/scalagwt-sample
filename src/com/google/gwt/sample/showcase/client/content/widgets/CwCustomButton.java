@@ -128,7 +128,7 @@ public class CwCustomButton extends ContentWidget {
   }
 
   @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
+  public void asyncOnInitialize(final AsyncCallback<Widget> callback) {
     GWT.runAsync(new RunAsyncCallback() {
 
       public void onFailure(Throwable caught) {

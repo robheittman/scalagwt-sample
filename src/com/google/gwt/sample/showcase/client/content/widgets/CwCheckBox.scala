@@ -26,88 +26,64 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-/**
- * Example file.
- */
-@ShowcaseStyle(".gwt-CheckBox")
-public class CwCheckBox extends ContentWidget {
+object CwCheckBox {
   /**
    * The constants used in this Content Widget.
    */
   @ShowcaseSource
-  public static interface CwConstants extends Constants,
-      ContentWidget.CwConstants {
-    String cwCheckBoxCheckAll();
+  trait CwConstants extends Constants with ContentWidget.CwConstants {
+    def cwCheckBoxCheckAll(): String
 
-    String[] cwCheckBoxDays();
+    def cwCheckBoxDays(): Array[String]
 
-    String cwCheckBoxDescription();
+    def cwCheckBoxDescription(): String
 
-    String cwCheckBoxName();
+    def cwCheckBoxName(): String
   }
+}
 
-  /**
-   * An instance of the constants.
-   */
-  @ShowcaseData
-  private CwConstants constants;
+/**
+ * Example file.
+ */
+@ShowcaseStyle(value = Array(".gwt-CheckBox"))
+class CwCheckBox(constants: CwCheckBox.CwConstants) extends ContentWidget(constants) {
 
-  /**
-   * Constructor.
-   * 
-   * @param constants the constants
-   */
-  public CwCheckBox(CwConstants constants) {
-    super(constants);
-    this.constants = constants;
-  }
+  override def getDescription() = constants.cwCheckBoxDescription
 
-  @Override
-  public String getDescription() {
-    return constants.cwCheckBoxDescription();
-  }
-
-  @Override
-  public String getName() {
-    return constants.cwCheckBoxName();
-  }
+  override def getName() = constants.cwCheckBoxName
 
   /**
    * Initialize this example.
    */
   @ShowcaseSource
-  @Override
-  public Widget onInitialize() {
+  override def onInitialize(): Widget = {
     // Create a vertical panel to align the check boxes
-    VerticalPanel vPanel = new VerticalPanel();
-    HTML label = new HTML(constants.cwCheckBoxCheckAll());
-    label.ensureDebugId("cwCheckBox-label");
-    vPanel.add(label);
+    val vPanel = new VerticalPanel()
+    val label = new HTML(constants.cwCheckBoxCheckAll)
+    label.ensureDebugId("cwCheckBox-label")
+    vPanel.add(label)
 
     // Add a checkbox for each day of the week
-    String[] daysOfWeek = constants.cwCheckBoxDays();
-    for (int i = 0; i < daysOfWeek.length; i++) {
-      String day = daysOfWeek[i];
-      CheckBox checkBox = new CheckBox(day);
-      checkBox.ensureDebugId("cwCheckBox-" + day);
-
+    val daysOfWeek = constants.cwCheckBoxDays
+    for (i <- 0 until daysOfWeek.length) {
+      val day = daysOfWeek(i)
+      val checkBox = new CheckBox(day)
+      checkBox.ensureDebugId("cwCheckBox-" + day)
       // Disable the weekends
       if (i >= 5) {
-        checkBox.setEnabled(false);
+        checkBox.setEnabled(false)
       }
-
-      vPanel.add(checkBox);
+      vPanel.add(checkBox)
     }
 
     // Return the panel of checkboxes
-    return vPanel;
+    return vPanel
   }
 
-  @Override
-  protected void asyncOnInitialize(final AsyncCallback<Widget> callback) {
+  override protected def asyncOnInitialize(callback: AsyncCallback[Widget]) = {
     /*
      * CheckBox is the first demo loaded, so go ahead and load it synchronously.
      */
-    callback.onSuccess(onInitialize());
+    callback.onSuccess(onInitialize())
   }
 }
