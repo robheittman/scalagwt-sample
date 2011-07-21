@@ -184,7 +184,8 @@ class CwStackPanel(@ShowcaseData private val constants: CwStackPanel.CwConstants
     contactsPanel.setSpacing(4)
     val contactNames = constants.cwStackPanelContacts
     val contactEmails = constants.cwStackPanelContactsEmails
-    contactNames.zip(contactEmails) foreach { pair =>
+    // TODO .toList below is a workaround for https://github.com/scalagwt/scalagwt-scala/issues/6
+    contactNames.toList.zip(contactEmails) foreach { pair =>
       val (contactName, contactEmail) = pair
       val contactLink: HTML =
         new HTML("""<a href="javascript:undefined;">""" + contactName + "</a>")
