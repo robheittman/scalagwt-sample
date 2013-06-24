@@ -16,7 +16,6 @@ package com.google.gwt.sample.showcase.client
  * the License.
  */
 
-
 import com.google.gwt.core.client.EntryPoint
 import com.google.gwt.core.client.GWT
 import com.google.gwt.dom.client.Element
@@ -91,7 +90,6 @@ import com.google.gwt.user.client.ui.VerticalPanel
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.Map
-
 
 object Showcase {
    /**
@@ -261,10 +259,10 @@ class Showcase extends EntryPoint {
     */
    private def setupMainLinks(constants: ShowcaseConstants): Unit = {
       // Link to GWT Homepage
-      app.addLink(new HTML(<a href={ShowcaseConstants.GWT_HOMEPAGE}>{ constants.mainLinkHomepage }</a>.toString))
+      app.addLink(new HTML("<a href=" + ShowcaseConstants.GWT_HOMEPAGE + ">" + constants.mainLinkHomepage + "</a>"))
 
       // Link to More Examples
-      app.addLink(new HTML(<a href={ShowcaseConstants.GWT_EXAMPLES}>{ constants.mainLinkExamples }</a>.toString))
+      app.addLink(new HTML("<a href=" + ShowcaseConstants.GWT_EXAMPLES + ">" + constants.mainLinkExamples + "</a>"))
    }
 
    /**
@@ -421,7 +419,7 @@ class Showcase extends EntryPoint {
     */
    private def setupTitlePanel(constants: ShowcaseConstants): Unit = {
       // Get the title from the internationalized constants
-      val pageTitle = <h1>{ constants.mainTitle }</h1><h2>{ constants.mainSubTitle }</h2>;
+      val pageTitle = "<h1>" + constants.mainTitle + "</h1><h2>" + constants.mainSubTitle + "</h2>";
 
       // Add the title and some images to the title bar
       val titlePanel = new HorizontalPanel
@@ -447,6 +445,7 @@ class Showcase extends EntryPoint {
       var styleSheetsFound = false
       val headElem: HeadElement = StyleSheetLoader.getHeadElement
       var toRemove: List[Element] = Nil
+      /* TODO compare to GWT trunk
       val children: NodeList[Node] = headElem.getChildNodes
       for (i <- 0 to children.getLength;
            node = children.getItem(i) if (node.getNodeType == Node.ELEMENT_NODE);
@@ -461,6 +460,7 @@ class Showcase extends EntryPoint {
             toRemove = elem :: toRemove;
          }
       }
+      */
 
       // Return if we already have the correct style sheets
       if (styleSheetsFound && toRemove.size == 0) {

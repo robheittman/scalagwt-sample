@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <project name="Hello" default="build" basedir=".">
   <!-- Arguments -style PRETTY or -logLevel DEBUG to gwtc and devmode targets -->
-  <property name="gwt.args" value="" />
-  
+  <property name="gwt.args" value="-draftCompile -ea -style pretty -logLevel TRACE" />
+  <property name="scala.args" value="-no-specialization -g:notailcalls"/>
+
   <path id="scala.class.path">
-    <fileset dir="lib/scala" includes="scala-compiler.jar,scala-library.jar"/>
+    <fileset dir="lib/scala" includes="*.jar"/>
   </path>
 
   <path id="project.class.path">
     <pathelement location="war/WEB-INF/classes"/>
-    <pathelement location="lib/gwt/gwt-user.jar"/>
     <pathelement location="lib/scala/scala-library-jribble.jar"/>
-    <fileset dir="lib/gwt" includes="gwt-dev*.jar"/>
+    <fileset dir="lib/gwt" includes="*.jar"/>
     <!-- Add any additional non-server libs (such as JUnit) -->
     <fileset dir="war/WEB-INF/lib" includes="**/*.jar"/>
     <path refid="scala.class.path"/>
@@ -30,9 +30,11 @@
         <path refid="project.class.path"/>
       </classpath>
       <!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
-      <jvmarg value="-Xmx256M"/>
+      <jvmarg value="-Xmx512M"/>
+      <jvmarg value="-Dx.gwt.astBuilder=true"/>
       <arg line="${gwt.args}"/>
       <arg value="com.google.gwt.sample.jribble.Hello"/>
+      <arg value="com.google.gwt.sample.showcase.Showcase"/>
     </java>
   </target>
   
@@ -41,23 +43,30 @@
   <target name="scalac" description="Scalac compile to jribble">
     <mkdir dir="war/WEB-INF/jribble"/>
     <!-- srcdir should really be 'src', but we can't compile both samples to jribble yet -->
-    <scalac srcdir="src/com/google/gwt/sample/jribble" includes="**"  destdir="war/WEB-INF/jribble" target="jribble">
+    <scalac srcdir="src" includes="**"  destdir="war/WEB-INF/jribble" target="jribble" addparams="${scala.args}">
       <classpath refid="project.class.path"/>
     </scalac>
+    <mkdir dir="war/WEB-INF/classes"/>
+    <scalac srcdir="src" includes="**"  destdir="war/WEB-INF/classes" addparams="${scala.args}">
+      <classpath refid="project.class.path"/>
+    </scalac>
+    <javac srcdir="src" destdir="war/WEB-INF/classes">
+      <classpath refid="project.class.path"/>
+    </javac>
   </target>
 
   <!-- temporary target to compile the showcase sample to jvm bytecode until jribble can be used -->
-  <target name="scalac-showcase-jvm" description="Scalac compile showcase to jvm bytecode">
-    <mkdir dir="war/WEB-INF/showcase"/>
-    <scalac srcdir="src/com/google/gwt/sample/showcase" includes="**"  destdir="war/WEB-INF/showcase">
+  <target name="scalac-jvm" description="Scalac compile showcase to jvm bytecode">
+    <mkdir dir="war/WEB-INF/jribble"/>
+    <scalac srcdir="src" includes="**"  destdir="war/WEB-INF/jribble">
       <classpath refid="project.class.path"/>
     </scalac>
   </target>
 
   <!-- temporary target to try compiling the showcase sample to jribble -->
-  <target name="scalac-showcase-jribble" description="Scalac compile showcase to jribble">
-    <mkdir dir="war/WEB-INF/showcase"/>
-    <scalac srcdir="src/com/google/gwt/sample/showcase" includes="**"  destdir="war/WEB-INF/showcase" target="jribble">
+  <target name="scalac-jribble" description="Scalac compile showcase to jribble">
+    <mkdir dir="war/WEB-INF/jribble"/>
+    <scalac srcdir="src" includes="**"  destdir="war/WEB-INF/jribble" target="jribble" addparams="${scala.args}">
       <classpath refid="project.class.path"/>
     </scalac>
   </target>
@@ -85,8 +94,11 @@
   <target name="clean" description="Cleans this project">
     <delete dir="war/WEB-INF/classes" failonerror="false" />
     <delete dir="war/WEB-INF/jribble" failonerror="false" />
-    <delete dir="war/WEB-INF/showcase" failonerror="false" />
     <delete dir="war/hello" failonerror="false" />
+    <delete dir="war/showcase" failonerror="false" />
+    <delete dir="gwt-unitCache" failonerror="false" />
+    <delete dir="jribbleCache" failonerror="false" />
+    <delete dir="war/jribbleCache" failonerror="false" />
     <delete file="Hello.war"/>
   </target>
 

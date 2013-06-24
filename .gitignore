@@ -1,7 +1,12 @@
 /war/hello/
+/war/showcase/
 /war/WEB-INF/classes/
+/war/WEB-INF/deploy/
 /war/WEB-INF/lib/gwt-servlet.jar
 /war/WEB-INF/jribble
-.project
+/war/WEB-INF/showcase
+/bin
+.scala_dependencies
 .settings/
-.classpath
+jribbleCache
+gwt-unitCache
